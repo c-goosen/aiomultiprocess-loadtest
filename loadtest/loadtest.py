@@ -39,6 +39,7 @@ async def run_aiomultiprocess(req_num=10):
     end = time.time()
     total_time = end - start
     # req_per_sec = total_time/60
+    print("run_aiomultiprocess")
     print("time = ", total_time)
     print(len(list(results))/total_time, "req/s")
 
@@ -59,6 +60,7 @@ async def run_async_only(req_num=10):
     end = time.time()
     total_time = end - start
     # req_per_sec = total_time/60
+    print("run_async_only")
     print("Num of results = ", len(list(results)))
     print("time = ", total_time)
     print(len(list(results))/total_time, "req/s")
@@ -67,6 +69,6 @@ async def run_async_only(req_num=10):
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_async_only(req_num=100))
-    loop.run_until_complete(run_aiomultiprocess(req_num=100))
+    loop.run_until_complete(run_async_only(req_num=2000))
+    loop.run_until_complete(run_aiomultiprocess(req_num=2000))
     loop.close()

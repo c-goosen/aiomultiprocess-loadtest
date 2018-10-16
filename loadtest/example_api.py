@@ -20,11 +20,15 @@ async def root(request):
     request_count =+ 1
     return response.json({"hello": "world", "uuid": str(uuid.uuid4())})
 
-@app.route("complaints/")
+#`@app.route("complaints/")
 @app.route("/complaints/<state>")
 async def complaints(request, state):
-    conn = await asyncpg.connect(user='goose',
-                                 database='consumer_complaints', host='127.0.0.1')
+    conn = await asyncpg.connect(user='goose', database='consumer_complaints', host='127.0.0.1')
+    # pool = await asyncpg.create_pool(user='goose', database='consumer_complaints', host='127.0.0.1',
+    #                                  min_size=2,
+    #                                  max_size=2,
+    #                                  )
+    # conn = await pool.acquire()
     try:
         start = time.time()
         query = '''SELECT index,state,company,product FROM complaints WHERE state LIKE $1 LIMIT 5;'''
