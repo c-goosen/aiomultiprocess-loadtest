@@ -13,3 +13,4 @@ uvloop==0.11.2
 websockets==5.0.1
 yarl==1.2.6
 httpx>=0.23.0 # not directly required, pinned by Snyk to avoid a vulnerability
+anyio>=4.4.0 # not directly required, pinned by Snyk to avoid a vulnerability
